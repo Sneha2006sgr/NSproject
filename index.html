@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoSphere - Encryption & Decryption Web Application</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-shield-alt"></i>
+                <span>CryptoSphere</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active" data-page="home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about" class="nav-link" data-page="about"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="#caesar" class="nav-link" data-page="caesar"><i class="fas fa-key"></i> Caesar</a></li>
+                <li><a href="#transposition" class="nav-link" data-page="transposition"><i class="fas fa-random"></i> Transposition</a></li>
+                <li><a href="#vigenere" class="nav-link" data-page="vigenere"><i class="fas fa-eye"></i> Vigenère</a></li>
+                <li><a href="#steganography" class="nav-link" data-page="steganography"><i class="fas fa-image"></i> Steganography</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Welcome to <span class="gradient-text">CryptoSphere</span></h1>
+                    <p class="hero-subtitle">Your comprehensive platform for encryption and decryption algorithms</p>
+                    <div class="hero-features">
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-key feature-icon"></i>
+                                <h3>Caesar Cipher</h3>
+                                <p>Classic shift-based encryption with customizable keys</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-random feature-icon"></i>
+                                <h3>Transposition</h3>
+                                <p>Columnar and rail-fence encryption techniques</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-eye feature-icon"></i>
+                                <h3>Vigenère Cipher</h3>
+                                <p>Keyword-based polyalphabetic encryption</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-image feature-icon"></i>
+                                <h3>Steganography</h3>
+                                <p>Hide secret messages within images</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" onclick="showPage('caesar')">Get Started</button>
+                        <button class="btn btn-secondary" onclick="showPage('about')">Learn More</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1>About CryptoSphere</h1>
+                    <p>Understanding the world of cryptography and data security</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-section">
+                        <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+                        <p>CryptoSphere is designed to make cryptography accessible and educational. We provide a comprehensive platform where users can explore, learn, and implement various encryption and decryption algorithms in an intuitive web interface.</p>
+                    </div>
+                    <div class="about-section">
+                        <h2><i class="fas fa-cogs"></i> What We Offer</h2>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <div>
+                                    <h3>Secure Algorithms</h3>
+                                    <p>Implementation of time-tested cryptographic algorithms with modern web technologies</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h3>Educational Focus</h3>
+                                    <p>Learn how different encryption methods work through hands-on experience</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-mobile-alt"></i>
+                                <div>
+                                    <h3>User-Friendly Interface</h3>
+                                    <p>Clean, responsive design that works seamlessly across all devices</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-lock"></i>
+                                <div>
+                                    <h3>Privacy First</h3>
+                                    <p>All processing happens locally in your browser - your data never leaves your device</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-section">
+                        <h2><i class="fas fa-users"></i> Who We Are</h2>
+                        <p>We are passionate developers and cryptography enthusiasts committed to making secure communication tools accessible to everyone. Our goal is to bridge the gap between complex cryptographic concepts and practical, everyday applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Caesar Cipher Page -->
+        <section id="caesar" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1><i class="fas fa-key"></i> Caesar Cipher</h1>
+                    <p>Encrypt and decrypt text using the classic shift cipher</p>
+                </div>
+                <div class="algorithm-container">
+                    <div class="input-section">
+                        <div class="input-group">
+                            <label for="caesar-text">Enter Text:</label>
+                            <textarea id="caesar-text" placeholder="Type your message here..." rows="4"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="caesar-shift">Shift Key (1-25):</label>
+                            <input type="number" id="caesar-shift" min="1" max="25" value="3" placeholder="3">
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" onclick="caesarEncrypt()">
+                                <i class="fas fa-lock"></i> Encrypt
+                            </button>
+                            <button class="btn btn-secondary" onclick="caesarDecrypt()">
+                                <i class="fas fa-unlock"></i> Decrypt
+                            </button>
+                            <button class="btn btn-outline" onclick="clearCaesar()">
+                                <i class="fas fa-eraser"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div class="output-section">
+                        <div class="output-group">
+                            <label>Result:</label>
+                            <div class="output-box">
+                                <textarea id="caesar-result" readonly placeholder="Your result will appear here..."></textarea>
+                                <button class="copy-btn" onclick="copyToClipboard('caesar-result')">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transposition Cipher Page -->
+        <section id="transposition" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1><i class="fas fa-random"></i> Transposition Cipher</h1>
+                    <p>Rearrange text using columnar transposition method</p>
+                </div>
+                <div class="algorithm-container">
+                    <div class="input-section">
+                        <div class="input-group">
+                            <label for="trans-text">Enter Text:</label>
+                            <textarea id="trans-text" placeholder="Type your message here..." rows="4"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="trans-key">Key (word/phrase):</label>
+                            <input type="text" id="trans-key" placeholder="SECRET" value="SECRET">
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" onclick="transpositionEncrypt()">
+                                <i class="fas fa-lock"></i> Encrypt
+                            </button>
+                            <button class="btn btn-secondary" onclick="transpositionDecrypt()">
+                                <i class="fas fa-unlock"></i> Decrypt
+                            </button>
+                            <button class="btn btn-outline" onclick="clearTransposition()">
+                                <i class="fas fa-eraser"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div class="output-section">
+                        <div class="output-group">
+                            <label>Result:</label>
+                            <div class="output-box">
+                                <textarea id="trans-result" readonly placeholder="Your result will appear here..."></textarea>
+                                <button class="copy-btn" onclick="copyToClipboard('trans-result')">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vigenère Cipher Page -->
+        <section id="vigenere" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1><i class="fas fa-eye"></i> Vigenère Cipher</h1>
+                    <p>Polyalphabetic encryption using a keyword</p>
+                </div>
+                <div class="algorithm-container">
+                    <div class="input-section">
+                        <div class="input-group">
+                            <label for="vigenere-text">Enter Text:</label>
+                            <textarea id="vigenere-text" placeholder="Type your message here..." rows="4"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="vigenere-key">Keyword:</label>
+                            <input type="text" id="vigenere-key" placeholder="KEYWORD" value="KEYWORD">
+                        </div>
+                        <div class="button-group">
+                            <button class="btn btn-primary" onclick="vigenereEncrypt()">
+                                <i class="fas fa-lock"></i> Encrypt
+                            </button>
+                            <button class="btn btn-secondary" onclick="vigenereDecrypt()">
+                                <i class="fas fa-unlock"></i> Decrypt
+                            </button>
+                            <button class="btn btn-outline" onclick="clearVigenere()">
+                                <i class="fas fa-eraser"></i> Clear
+                            </button>
+                        </div>
+                    </div>
+                    <div class="output-section">
+                        <div class="output-group">
+                            <label>Result:</label>
+                            <div class="output-box">
+                                <textarea id="vigenere-result" readonly placeholder="Your result will appear here..."></textarea>
+                                <button class="copy-btn" onclick="copyToClipboard('vigenere-result')">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Steganography Page -->
+        <section id="steganography" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h1><i class="fas fa-image"></i> Steganography</h1>
+                    <p>Hide secret messages within images</p>
+                </div>
+                <div class="algorithm-container">
+                    <div class="stego-tabs">
+                        <button class="tab-btn active" onclick="showStegoTab('hide')">Hide Message</button>
+                        <button class="tab-btn" onclick="showStegoTab('extract')">Extract Message</button>
+                    </div>
+                    
+                    <!-- Hide Message Tab -->
+                    <div id="hide-tab" class="stego-tab active">
+                        <div class="input-section">
+                            <div class="input-group">
+                                <label for="stego-image">Select Image:</label>
+                                <input type="file" id="stego-image" accept="image/*" onchange="loadImage(this)">
+                                <div class="file-info" id="file-info"></div>
+                            </div>
+                            <div class="input-group">
+                                <label for="secret-message">Secret Message:</label>
+                                <textarea id="secret-message" placeholder="Enter your secret message..." rows="3"></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="stego-password">Password:</label>
+                                <input type="password" id="stego-password" placeholder="Enter password for encryption">
+                            </div>
+                            <div class="button-group">
+                                <button class="btn btn-primary" onclick="hideMessage()">
+                                    <i class="fas fa-eye-slash"></i> Hide Message
+                                </button>
+                                <button class="btn btn-outline" onclick="clearSteganography()">
+                                    <i class="fas fa-eraser"></i> Clear
+                                </button>
+                            </div>
+                        </div>
+                        <div class="output-section">
+                            <div class="image-preview">
+                                <canvas id="stego-canvas" style="display: none;"></canvas>
+                                <div id="download-section" style="display: none;">
+                                    <p>Message hidden successfully!</p>
+                                    <button class="btn btn-success" onclick="downloadImage()">
+                                        <i class="fas fa-download"></i> Download Image
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Extract Message Tab -->
+                    <div id="extract-tab" class="stego-tab">
+                        <div class="input-section">
+                            <div class="input-group">
+                                <label for="extract-image">Select Image with Hidden Message:</label>
+                                <input type="file" id="extract-image" accept="image/*" onchange="loadExtractImage(this)">
+                            </div>
+                            <div class="input-group">
+                                <label for="extract-password">Password:</label>
+                                <input type="password" id="extract-password" placeholder="Enter password to decrypt">
+                            </div>
+                            <div class="button-group">
+                                <button class="btn btn-primary" onclick="extractMessage()">
+                                    <i class="fas fa-eye"></i> Extract Message
+                                </button>
+                                <button class="btn btn-outline" onclick="clearExtraction()">
+                                    <i class="fas fa-eraser"></i> Clear
+                                </button>
+                            </div>
+                        </div>
+                        <div class="output-section">
+                            <div class="output-group">
+                                <label>Extracted Message:</label>
+                                <div class="output-box">
+                                    <textarea id="extracted-message" readonly placeholder="Extracted message will appear here..."></textarea>
+                                    <button class="copy-btn" onclick="copyToClipboard('extracted-message')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-shield-alt"></i> CryptoSphere</h3>
+                    <p>Making cryptography accessible and educational for everyone.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                        <li><a href="#about" onclick="showPage('about')">About Us</a></li>
+                        <li><a href="#caesar" onclick="showPage('caesar')">Algorithms</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Security</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Client-side processing</li>
+                        <li><i class="fas fa-check"></i> No data transmission</li>
+                        <li><i class="fas fa-check"></i> Privacy protected</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CryptoSphere. All rights reserved. | Built with ❤️ for cryptography enthusiasts</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
